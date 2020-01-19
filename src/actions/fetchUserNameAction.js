@@ -1,7 +1,6 @@
 export const fetchUserNameAction = value => {
-    console.log(value,"val in action")
-  return ({
+  return {
     type: 'FETCH_NAME',
     value: value
-  })
+  }
 }

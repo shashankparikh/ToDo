@@ -1,7 +1,7 @@
 import React from 'react'
-import { Divider,Button } from 'antd'
+import { Divider, Button } from 'antd'
 
-export const tableConfig = (deleteItem,editItem) => {
+export const tableConfig = (deleteItem, editItem) => {
   return [
     {
       title: 'Name',
@@ -13,15 +13,14 @@ export const tableConfig = (deleteItem,editItem) => {
       title: 'Action',
       key: 'action',
       render: (text, record) => {
-        console.log(record,"record")
-          return (
-          
-        <span>
-          <a onClick={()=>editItem(record)}>Edit</a>
-          <Divider type='vertical' />
-          <a onClick={()=>deleteItem(record.key)}>Delete</a>
-        </span>
-      )}
+        return (
+          <span>
+            <a onClick={() => editItem(record)}>Edit</a>
+            <Divider type='vertical' />
+            <a onClick={() => deleteItem(record.key)}>Delete</a>
+          </span>
+        )
+      }
     }
   ]
 }

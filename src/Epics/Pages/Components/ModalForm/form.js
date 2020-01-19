@@ -1,36 +1,37 @@
-
 import React, { Component } from 'react'
-import {CustomInput} from './style'
+import { CustomInput } from './style'
 
 export default class form extends Component {
+  state = {
+    email: '',
+    name: ''
+  }
+  nameChange = e => {
+    this.props.fetchName(e.target.value)
+  }
+  emailChange = e => {
+    this.setState({ email: e.target.value })
+  }
 
-    state={
-        email:'',
-        name:''
+  componentWillReceiveProps (nextProps) {
+    if (this.props !== nextProps) {
+      this.getValue(nextProps)
     }
-    nameChange = (e)=>{
-        this.props.fetchName(e.target.value)
-    }
-    emailChange = (e)=>{
-        this.setState({email:e.target.value})
-    }
+  }
+  getValue = data => {
+    this.setState({ name: data })
+  }
 
-    componentWillReceiveProps(nextProps){
-        if(this.props !== nextProps){
-           this.getValue(nextProps) 
-        }
-    }
-    getValue =(data)=>{
-        this.setState({name:data})
-    }
-
-    render() {
-        console.log(this.props,"editName in form")
-        return (
-            <>
-                <CustomInput placeholder="Your Name" onChange={this.nameChange} defaultValue={this.state.name}/>
-                <CustomInput placeholder="Your Email" onChange={this.emailChange}/>
-            </>
-        )
-    }
+  render () {
+    return (
+      <>
+        <CustomInput
+          placeholder='Your Name'
+          onChange={this.nameChange}
+          defaultValue={this.state.name}
+        />
+        <CustomInput placeholder='Your Email' onChange={this.emailChange} />
+      </>
+    )
+  }
 }

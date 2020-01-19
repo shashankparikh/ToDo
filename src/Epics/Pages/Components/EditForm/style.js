@@ -3,6 +3,6 @@ import { Input } from 'antd';
 
 
 export const CustomInput = styled(Input)`
- margin:20px;
+ margin:0 auto;
  width:200px;
 `

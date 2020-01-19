@@ -11,7 +11,8 @@ class UserTab extends Component {
     showPopup: false,
     name: '',
     value: null,
-    count:0
+    count: 0,
+    isLoading: false
   }
 
   showModal = () => {
@@ -31,20 +32,24 @@ class UserTab extends Component {
   }
 
   handelAdd = () => {
-      const createName = {
-        data: this.state.name,
-        key: this.state.count + 1
-      }
+    const createName = {
+      data: this.state.name,
+      key: this.state.count + 1
+    }
     this.props.fetchUserNameAction(createName)
     this.setState({
-      showPopup: !this.state.showPopup,
-      name:'',
-      count:createName.key
+      name: '',
+      count: createName.key,
+      isLoading: !this.state.isLoading
     })
+    setTimeout(() => {
+      this.setState({ isLoading: false, showPopup: !this.state.showPopup })
+    }, 2000)
   }
 
   render () {
-    const { showPopup } = this.state
+    const { showPopup, isLoading } = this.state
+
     return (
       <div>
         <ButtonComponent title='Create Users' onClick={this.showModal} />
@@ -53,6 +58,7 @@ class UserTab extends Component {
           title='Add the User'
           add={this.handelAdd}
           cancel={this.handleCancel}
+          loading={isLoading}
         >
           <Form fetchName={this.fetchName} />
         </Popup>
@@ -66,4 +72,9 @@ const mapDispatchToProps = dispatch => ({
   fetchUserNameAction: data => dispatch(fetchUserNameAction(data))
 })
 
-export default connect(null, mapDispatchToProps)(UserTab)
+const mapStateToProps = state => ({
+  getData: state.userNameReducer,
+  isLoading: state.userNameReducer.isLoading
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserTab)

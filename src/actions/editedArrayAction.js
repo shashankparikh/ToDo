@@ -1,7 +1,6 @@
 export const editedArrayAction = value => {
-    console.log(value,"val in action")
-  return ({
+  return {
     type: 'EDITED_ARRAY',
     value: value
-  })
+  }
 }

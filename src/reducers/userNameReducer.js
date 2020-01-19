@@ -4,7 +4,6 @@ const initialState = {
 }
 
 export default function (state = initialState, action) {
-  console.log(action, 'in reducer')
   switch (action.type) {
     case 'FETCH_NAME':
       return {
