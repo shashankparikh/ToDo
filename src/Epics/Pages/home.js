@@ -20,7 +20,7 @@ class Home extends Component {
       <div>
         <Tabs defaultActiveKey='1' onChange={this.callback}>
           <TabPane tab='Todo' key='1'>
-            Content of Tab Pane 1
+            Content of Tab Pane
           </TabPane>
           <TabPane tab='Users' key='2'>
             <UserTab />
