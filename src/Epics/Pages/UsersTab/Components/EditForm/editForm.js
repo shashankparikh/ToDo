@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { CustomInput } from './style'
 
+
 export default class editForm extends Component {
   state = {
     email: '',
@@ -19,7 +20,7 @@ export default class editForm extends Component {
 
     return (
       <>
-        <CustomInput onChange={this.nameChange} defaultValue={editName} />
+        <CustomInput onChange={this.nameChange} value={editName} />
       </>
     )
   }

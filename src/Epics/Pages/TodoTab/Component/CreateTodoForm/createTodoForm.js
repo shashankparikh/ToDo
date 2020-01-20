@@ -1,16 +1,12 @@
 import React, { Component } from 'react'
 import { CustomInput } from './style'
 
-export default class form extends Component {
+export default class createTodoForm extends Component {
   state = {
-    email: '',
-    name: ''
-  }
-  nameChange = e => {
-    this.props.fetchName(e.target.value)
+    email: ''
   }
   emailChange = e => {
-    this.setState({ email: e.target.value })
+    this.props.fetchName(e.target.value)
   }
 
   componentWillReceiveProps (nextProps) {
@@ -19,18 +15,17 @@ export default class form extends Component {
     }
   }
   getValue = data => {
-    this.setState({ name: data })
+    this.setState({ email: data })
   }
 
   render () {
     return (
       <>
         <CustomInput
-          placeholder='Your Name'
-          onChange={this.nameChange}
+          placeholder='Your Email'
+          onChange={this.emailChange}
           value={this.props.name}
         />
-        <CustomInput placeholder='Your Email' onChange={this.emailChange} />
       </>
     )
   }

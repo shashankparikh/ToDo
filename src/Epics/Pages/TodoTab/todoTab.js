@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import { ButtonComponent } from '../../../../CommonComponents/Button/button'
-import { Popup } from '../../../../CommonComponents/Modal/Modal'
-import Form from '../../Components/ModalForm/form'
-import Table from '../Table/table'
+import { ButtonComponent } from '../../../CommonComponents/Button/button'
+import { Popup } from '../../../CommonComponents/Modal/Modal'
+import TodoForm from './Component/CreateTodoForm/createTodoForm'
+import TodoTable from './Component/TodoTable/table'
 import { connect } from 'react-redux'
-import { fetchUserNameAction } from '../../../../actions/fetchUserNameAction'
+import { fetchEmailAction } from '../../../actions/TodoActions/fetchEmailAction'
 
-class UserTab extends Component {
+class TodoTab extends Component {
   state = {
     showPopup: false,
     name: '',
@@ -37,7 +37,7 @@ class UserTab extends Component {
       data: this.state.name,
       key: this.state.count + 1
     }
-    this.props.fetchUserNameAction(createName)
+    this.props.fetchEmailAction(createName)
     this.setState({
       name: '',
       count: createName.key,
@@ -53,7 +53,7 @@ class UserTab extends Component {
 
     return (
       <div>
-        <ButtonComponent title='Create Users' onClick={this.showModal} />
+        <ButtonComponent title='Create Todos' onClick={this.showModal} />
         <Popup
           show={showPopup}
           title='Add the User'
@@ -61,21 +61,22 @@ class UserTab extends Component {
           cancel={this.handleCancel}
           loading={isLoading}
         >
-          <Form fetchName={this.fetchName} name={this.state.name}/>
+          <TodoForm fetchName={this.fetchName} name={this.state.name}/>
         </Popup>
-        <Table />
+        <TodoTable />
+      
       </div>
     )
   }
 }
 
 const mapDispatchToProps = dispatch => ({
-  fetchUserNameAction: data => dispatch(fetchUserNameAction(data))
+    fetchEmailAction: data => dispatch(fetchEmailAction(data))
 })
 
 const mapStateToProps = state => ({
-  getData: state.userNameReducer,
-  isLoading: state.userNameReducer.isLoading
+  getData: state.todoEmailReducer,
+  isLoading: state.todoEmailReducer.isLoading
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserTab)
+export default connect(mapStateToProps, mapDispatchToProps)(TodoTab)

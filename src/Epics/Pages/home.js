@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Tabs } from 'antd'
-import UserTab from './Components/UsersTab/userTab'
+import UserTab from './UsersTab/userTab'
+import TodoTab from './TodoTab/todoTab'
 
 const { TabPane } = Tabs
 class Home extends Component {
@@ -11,7 +12,7 @@ class Home extends Component {
       <div>
         <Tabs defaultActiveKey='2' onChange={this.callback}>
           <TabPane tab='Todo' key='1'>
-            Content of Todo
+            <TodoTab/>
           </TabPane>
           <TabPane tab='Users' key='2'>
             <UserTab />

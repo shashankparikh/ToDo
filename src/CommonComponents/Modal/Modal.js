@@ -1,9 +1,10 @@
 import React from 'react'
-import { Modal, Button } from 'antd'
+import { Button } from 'antd'
+import {CustomModal} from './style'
 
 export function Popup ({ title, show, cancel, add, loading, children }) {
   return (
-    <Modal
+    <CustomModal
       centered
       onCancel={cancel}
       onOk={add}
@@ -11,7 +12,7 @@ export function Popup ({ title, show, cancel, add, loading, children }) {
       title={title}
       footer={[
         <Button key='back' onClick={cancel}>
-          Return
+          Cancel
         </Button>,
         <Button key='submit' type='primary' loading={loading} onClick={add}>
           Submit
@@ -19,6 +20,6 @@ export function Popup ({ title, show, cancel, add, loading, children }) {
       ]}
     >
       {children}
-    </Modal>
+    </CustomModal>
   )
 }
