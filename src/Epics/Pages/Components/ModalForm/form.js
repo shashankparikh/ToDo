@@ -28,7 +28,7 @@ export default class form extends Component {
         <CustomInput
           placeholder='Your Name'
           onChange={this.nameChange}
-          defaultValue={this.state.name}
+          value={this.props.name}
         />
         <CustomInput placeholder='Your Email' onChange={this.emailChange} />
       </>

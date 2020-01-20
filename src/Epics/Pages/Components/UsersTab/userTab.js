@@ -61,7 +61,7 @@ class UserTab extends Component {
           cancel={this.handleCancel}
           loading={isLoading}
         >
-          <Form fetchName={this.fetchName} />
+          <Form fetchName={this.fetchName} name={this.state.name}/>
         </Popup>
         <Table />
       </div>
