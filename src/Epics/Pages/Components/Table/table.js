@@ -7,7 +7,7 @@ import { editedArrayAction } from '../../../../actions/editedArrayAction'
 import { tableConfig } from './config'
 import { connect } from 'react-redux'
 
-const dataArray = []
+let storageData = ''
 class table extends Component {
   state = {
     count: 0,
@@ -24,7 +24,17 @@ class table extends Component {
   }
 
   getTableData = data => {
-    this.setState({ dataArray: data.userName, count: data.userName.key })
+    this.setState({ dataArray: data.userName, count: data.userName.key }, () =>
+      this.storageData(this.state.dataArray)
+    )
+  }
+  storageData = data => {
+    localStorage.setItem('myData', JSON.stringify(data))
+  }
+
+  componentDidMount () {
+    storageData = JSON.parse(localStorage.getItem('myData'))
+    this.setState({ dataArray: storageData })
   }
 
   deleteItem = key => {

@@ -10,9 +10,10 @@ class UserTab extends Component {
   state = {
     showPopup: false,
     name: '',
-    value: null,
+    value: '',
     count: 0,
-    isLoading: false
+    isLoading: false,
+    
   }
 
   showModal = () => {
@@ -44,7 +45,7 @@ class UserTab extends Component {
     })
     setTimeout(() => {
       this.setState({ isLoading: false, showPopup: !this.state.showPopup })
-    }, 2000)
+    }, 1000)
   }
 
   render () {
