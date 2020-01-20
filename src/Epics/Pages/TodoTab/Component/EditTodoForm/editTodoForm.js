@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { CustomInput } from './style'
+import { CustomInput } from '../../../style'
 
 
 export default class editTodoForm extends Component {

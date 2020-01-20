@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import { Table, Divider, Tag } from 'antd'
+import {  Divider, Tag } from 'antd'
 import { Popup } from '../../../../../CommonComponents/Modal/Modal'
+import {CustomTable} from '../../../../../CommonComponents/Table/table'
 import EditForm from '../EditForm/editForm'
 import { deletedArrayAction } from '../../../../../actions/UserActions/deleteArrayAction'
 import { editedArrayAction } from '../../../../../actions/UserActions/editedArrayAction'
-import { tableConfig } from './config'
 import { connect } from 'react-redux'
 
 let storageData = ''
@@ -45,8 +45,6 @@ class table extends Component {
   }
 
   editItem = record => {
-    console.log(record,"record")
-
     this.setState({
       editName: record.data,
       editedKey: record.key,
@@ -79,9 +77,11 @@ class table extends Component {
     const { deleteItem, editItem, updatedName } = this
     return (
       <>
-        <Table
-          columns={tableConfig(deleteItem, editItem)}
-          dataSource={dataArray}
+        <CustomTable
+        deleteItem={deleteItem}
+        editItem = {editItem}
+         // columns={tableConfig(deleteItem, editItem)}
+         dataArray={dataArray}
         />
         <Popup
           show={showModal}
